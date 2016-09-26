@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Headquarter list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for headquarter in headquarters %}
+            <tr>
+                <td><a href="{{ path('headquarter_show', { 'id': headquarter.id }) }}">{{ headquarter.id }}</a></td>
+                <td>{{ headquarter.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('headquarter_show', { 'id': headquarter.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('headquarter_edit', { 'id': headquarter.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('headquarter_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
